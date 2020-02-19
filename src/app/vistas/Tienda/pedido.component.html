@@ -1,1 +1,72 @@
-<p>pedido works!</p>
+<div class="container">
+    <!-- Pasarle a la vista la lista de itemsCarro y por cada item pintar una minilista de 
+        minilibro pedido -->
+    <div class="row"
+         *ngFor="let item of itemsCarro">
+        <div class="col">
+            <app-minilibropedido [itemPintar]="item" (actualizaPedido)="ActualizaPedido($event)"></app-minilibropedido>        
+        </div>
+    </div>
+
+    <hr>
+    
+    <div class="row">
+        <div class="col">
+            <label> <strong>Subtotal:</strong>  {{SubTotalPedido}} €</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+                <div>
+                    <label> <strong>Gastos de Envio: </strong> {{GastosEnvio}} €</label>
+                </div>
+                <!-- Default inline 1-->
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="defaultInline1"  name="inlineDefaultRadiosExample" checked value="Peninsula" (click)="GastosEnvio('Peninsula')">
+                    <label class="custom-control-label" for="defaultInline1">Peninsula y Baleares</label>
+                </div>
+                
+                <!-- Default inline 2-->
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="defaultInline2" name="inlineDefaultRadiosExample" value="Canarias" (click)="GastosEnvio('Canarias')">
+                    <label class="custom-control-label" for="defaultInline2">Islas Canarias</label>
+                </div>
+                
+                <!-- Default inline 3-->
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" class="custom-control-input" id="defaultInline3" name="inlineDefaultRadiosExample" value="UE" (click)="GastosEnvio('UE')">
+                    <label class="custom-control-label" for="defaultInline3">Union Europea</label>
+                </div>
+        </div>
+    </div>
+    
+    <hr>
+    
+    <div class="row">
+        <div class="col">
+            <label> <strong>TOTAL A PAGAR:</strong>  {{TotalPedido}} €</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col col-3">
+            <a class="btn btn-default" 
+            [routerLink]="['/Libros',0]"
+            routerLinkActive="router-link-active">
+                <img src="../../../assets/images/BtonSeguirComprando.png">
+            </a>
+        </div>
+
+        <div class="col col-3">
+            <a class="btn btn-primary"
+            [routerLink]="['/Tienda/FinalizarPedido']"
+             routerLinkActive="router-link-active">
+                <img src="../../../assets/images/BtonFinalizarPedido.png">
+            </a>
+        </div>
+    </div>
+
+
+</div>
+

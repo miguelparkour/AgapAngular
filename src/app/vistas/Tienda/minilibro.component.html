@@ -38,12 +38,12 @@
                 <div name="btnComprarLibro"
                      style="visibility:visible">
 
-                    <a class="btn"
-                       [routerLink]="['/AddLibroPedido', libroApintar.ISBN]"
-                       routerLinkActive="router-link-active" 
-                    >
+                    <button class="btn btn-primary"
+                     style="display:inline-block"
+                     (click)="ComprarLibro(libroApintar)"
+                     >
                         <img src="./../../assets/images/BotonComprar.png" />
-                    </a>
+                    </button>
 
                 </div>
             </td>

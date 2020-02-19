@@ -19,6 +19,7 @@ import { AuthguardGuard } from './servicios/authguard.guard';
   { path: '', redirectTo: 'Libros/0', pathMatch: 'full' },
   { path: 'DetalleLibro/:param', component: VistalibroComponent },
   { path:'AddLibroPedido/:idLibro', component: PedidoComponent },
+  {path:'Tienda/Pedido',component:PedidoComponent},
   { path: 'Cliente',children:[
               { path:'Login', component: LoginComponent},
               { path:'Registro', component: RegistroComponent},

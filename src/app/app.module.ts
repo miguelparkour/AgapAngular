@@ -35,6 +35,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { RegistroComponent } from './componentes/ZonaCliente/registro.component';
 import { CargarthumbnailDirective } from './directivas/cargarthumbnail.directive';
+import { MinilibropedidoComponent } from './servicios/minilibropedido.component';
 
 
 
@@ -52,7 +53,8 @@ import { CargarthumbnailDirective } from './directivas/cargarthumbnail.directive
     PedidoComponent,
     LoginComponent,
     RegistroComponent,
-    CargarthumbnailDirective
+    CargarthumbnailDirective,
+    MinilibropedidoComponent
   ],
   imports: [
     BrowserModule,
