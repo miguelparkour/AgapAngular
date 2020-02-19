@@ -4,6 +4,8 @@ import { LocalstorageService } from 'src/app/servicios/localstorage.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthFirebaseService } from 'src/app/servicios/auth-firebase.service';
 import { CuentaCliente } from 'src/app/modelos/cuentaCliente';
+import { HttpClient } from '@angular/common/http';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-miperfil',
@@ -15,12 +17,15 @@ export class MiPerfilComponent implements OnInit {
   public formularioModificar:FormGroup;
   public cliente:Cliente;
   public campoVacio:string="";
+  public foto;
 
   constructor(private _storage: LocalstorageService,
-              private _auth: AuthFirebaseService) {
+              private _auth: AuthFirebaseService,
+              private afStorage: AngularFireStorage) {
     this.cliente=this._storage.RecuperarStorage('cliente');
     this.formularioModificar=new FormGroup(
       {
+        archivo: new FormControl('',[]),
         usernick: new FormControl('',[]),
         password: new FormControl('',[]),
         nombre: new FormControl('',[]),
@@ -30,8 +35,28 @@ export class MiPerfilComponent implements OnInit {
       }
     )
   }
+  
+  handleFileInput(event){
+    const id=Math.random().toString(36).substring(2);
+    const file=event.target.files[0];
+    const filePath='avatares/'+id+'.jpg';
+    const ref=this.afStorage.ref(filePath);
+    const task= this.afStorage.upload(filePath,file)
+    .then(
+      async a=>{
+        await ref.getDownloadURL().subscribe(
+          data=>{
+            console.log(data);// aquí está la url de la imagen subida en task
+          }
+        )
+      }
+    )
+  }
+
+
   modificarDatos(){
 
+    console.log(typeof(this.formularioModificar.value.foto));
     // inicializamos el cliente desde el storage
     let clienteStorage=this._storage.RecuperarStorage('cliente');
 
@@ -60,7 +85,7 @@ export class MiPerfilComponent implements OnInit {
     }
     console.log(clienteStorage);
     // llamamos al servicio para que actualice los datos en Firebase
-    this._auth.ActualizarCliente(clienteStorage);
+    //this._auth.ActualizarCliente(clienteStorage);
     
   }
 

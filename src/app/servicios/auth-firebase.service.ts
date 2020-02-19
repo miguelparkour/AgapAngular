@@ -14,6 +14,7 @@ import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { Router } from '@angular/router';
 import { resolve } from 'url';
 import { CuentaCliente } from '../modelos/cuentaCliente';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,8 @@ export class AuthFirebaseService {
   constructor( private _auth:AngularFireAuth,
                private _storage: LocalstorageService,
                private _db: AngularFirestore,
-               private _router: Router){}
+               private _router: Router,
+               private _afStorage:AngularFireStorage){}
 
 
   RegistrarCliente(cliente:Cliente):Promise<boolean>{
@@ -217,10 +219,10 @@ export class AuthFirebaseService {
   }
 
 
-  ActualizarCliente(cliente){
+  async ActualizarCliente(cliente){
 
     if (cliente.miCuenta.password) { // hay password para actualizar 
-      this._auth
+      await this._auth
           .auth
           .currentUser
           .updatePassword(cliente.miCuenta.password)

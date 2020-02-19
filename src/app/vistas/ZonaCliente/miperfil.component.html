@@ -21,6 +21,22 @@
                         <div class="card-body">
                             <h5 class="card-title">Datos de Mi Perfil...</h5>
                             <div class="form-row">
+                                <label for="archivo">
+                                    <img style="
+                                            height: 134px;
+                                            width: 158px;
+                                            margin: 10px 5px 0 0;"
+                                            id="imagenUsuario"                    
+                                            src="../../../assets/images/ImgCliente.png">
+                                </label>
+                                <input type="file"
+                                       id="archivo"
+                                       name="archivo"
+                                       formControlName="archivo"
+                                       hidden
+                                       (change)="handleFileInput($event)">
+                            </div>
+                            <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="usernick"><strong>Usuario (nickname)</strong></label>
                                     <input type="text"
