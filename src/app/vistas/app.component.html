@@ -1,0 +1,70 @@
+<div class="container">
+  <header>
+    <img src="./assets/images/cabecera.png" />
+</header>
+
+<div class="row">
+    <a [routerLink]="['/Cliente/Login']" routerLinkActive="router-link-active"  >
+       Acceder a mi cuenta
+    </a>
+</div>
+
+<!-- busqueda de libros-->
+<div class="row">
+        <div class="col">
+           <div class="table-responsive">
+             <table class="table">
+    <tr>
+        <td style="width:80%;">
+                <input type="text"
+                       class="form-control"
+                       style="width:100%; min-width:800px;"
+                       placeholder="...Buscar Libros por Titulo, ISBN, Autor..."
+                       id="TextoBuscar" />
+        </td>
+        <td style="width:20%;">
+            <button type="button" class="btn btn-primary" id="BotonBuscar">
+                <span class="glyphicon glyphicon-search"></span> Buscar
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <label class="radio-inline">
+                <input type="radio" name="optradio" checked>Titulo
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="optradio">Autor
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="optradio">ISBN
+            </label>
+        </td>
+    </tr>
+             </table>
+           </div>
+        </div>
+</div>
+
+ <!-- body de las vistas q se incrustan en el layout -->
+<div class="row">
+    <div class="col-3">
+        <!-- aqui va treeview de materias -->
+        <app-treeviewmaterias></app-treeviewmaterias>
+            
+    </div>
+    <div class="col-9">
+        <!-- aqui van las vistas de los componentes hijos 
+          como se incrustan dependiendo de la url q ponga el cliente
+          el selector q ha de ponerse:
+        -->
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+<footer>
+    <p>&copy;Agapea Factory S.A. 2002 - @DateTime.Now.Year - Reservados todos los derechos</p>
+    <a href="https://www.agapea.com/nota-legal.php">Aviso Legal</a> | <a href="https://www.agapea.com/condiciones-de-contratacion.php">Condiciones de Contratacion</a> | <a href="https://www.agapea.com/politica-privacidad.php">Politica de privacidad</a> | <a href="https://www.agapea.com/politica-cookies.php">Politica de Cookies</a>
+
+</footer>
+</div>

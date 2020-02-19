@@ -1,0 +1,9 @@
+<!-- recibo del componente la variable "listaMaterias"-->
+<div class="list-group">
+        <a *ngFor="let unamateria of listaMaterias"
+           [routerLink]="['/Libros', unamateria.IdMateria]"
+           routerLinkActive="router-link-active" 
+           class="list-group-item list-group-tiem-action">
+            {{unamateria.NombreMateria.split(';')[0]}}
+        </a>
+</div>

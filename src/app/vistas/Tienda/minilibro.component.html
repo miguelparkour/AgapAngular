@@ -1,0 +1,52 @@
+<div class="col-md-4" name="minilibros">
+    <table>
+        <tr>
+            <td rowspan="5">
+                <img src="../../assets/images/imagenLibro.png" />
+            </td>
+            <td>
+                <a 
+                 [routerLink]="['/DetalleLibro/',libroApintar.ISBN]"
+                 routerLinkActive="router-link-active"                
+                 (click)="cargarEnStorage(libroApintar)"
+                > {{libroApintar.Titulo}} </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label style = "font-size:0.875em">
+                    {{libroApintar.Autor}}
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label style = "font-size:0.875em">
+                    {{libroApintar.NumeroPaginas}} paginas
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label style = "font-size:0.875em">
+                    {{libroApintar.Precio}} Euros
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div name="btnComprarLibro"
+                     style="visibility:visible">
+
+                    <a class="btn"
+                       [routerLink]="['/AddLibroPedido', libroApintar.ISBN]"
+                       routerLinkActive="router-link-active" 
+                    >
+                        <img src="./../../assets/images/BotonComprar.png" />
+                    </a>
+
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

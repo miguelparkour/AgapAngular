@@ -1,0 +1,139 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+        <h3><strong>Mi perfil de usuario</strong></h3>
+        <p>Queremos estar en contacto contigo y ofrecert todas nuestras ventajas y servicios por ser usuario registrado
+        de Agapea, tanto en nuestras librerias como en Agapea.com</p>
+        </div>
+    </div>
+
+    <div class="row">
+    
+        <div class="col-12">
+            <!-- 
+            {{#if this.errores}}
+                <div><span class="text-danger">Errores en el servidor: {{this.errores.message}}</span></div>
+            {{/if}}
+            -->
+            <!-- formulario de datos personales -->
+                <form [formGroup]="formularioModificar" (ngSubmit)="modificarDatos()">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Datos de Mi Perfil...</h5>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="usernick"><strong>Usuario (nickname)</strong></label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="usernick"
+                                           name="usernick"
+                                           formControlName="usernick"
+                                           [placeholder]="cliente.miCuenta.usernick || campoVacio">
+                                </div>
+                            
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4"><strong>Correo Electronico</strong></label>
+                                    <input type="email"
+                                           class="form-control"
+                                           id="inputEmail4"
+                                           name="email"
+                                           [value]="cliente.miCuenta.email || campoVacio"
+                                           disabled>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4"><strong>Contraseña</strong></label>
+                                    <input type="password"
+                                           name="password"
+                                           formControlName="password"
+                                           class="form-control"
+                                           id="inputPassword4"
+                                           placeholder="Nueva contraseña">
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="reinputPassword4"><strong>Repite la contraseña</strong></label>
+                                    <input type="password"
+                                           class="form-control"
+                                           id="reinputPassword4"
+                                           placeholder="Repita la nueva contraseña">
+                                </div>
+                            </div>
+
+                            <!-- <div class="row">
+                                <div class="col">
+                                    <label><strong>Mi Descripcion</strong></label>
+                                    <textarea class="form-control"
+                                              placeholder="Me gusta definirme como un lector de libros de ...." 
+                                    ></textarea>
+                                </div>
+                            </div> -->
+                        </div>
+
+                    </div>
+
+                    <div class="card mt-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Datos de Personales...</h5>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputNombre"><strong>Mi Nombre es:</strong></label>
+                                    <input type="text"
+                                           name="nombre"
+                                           formControlName="nombre"
+                                           class="form-control"
+                                           id="inputNombre"
+                                           [placeholder]="cliente.nombre || campoVacio">
+                                </div>
+                            
+                                <div class="form-group col-md-6">
+                                    <label for="inputApellidos"><strong>Mis Apellidos son:</strong></label>
+                                    <input type="text"
+                                           name="apellidos"
+                                           formControlName="apellidos"
+                                           class="form-control"
+                                           id="inputApellidos"
+                                           [placeholder]="cliente.apellidos || campoVacio">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputNIF"><strong>NIF:</strong></label>
+                                    <input type="text"
+                                           name="nif"
+                                           formControlName="nif"
+                                           class="form-control"
+                                           id="inputNIF"
+                                           [placeholder]="cliente.nif || campoVacio">
+                                </div>
+                            
+                                <div class="form-group col-md-6">
+                                    <label for="inputTelefono"><strong>un telefono de contacto:</strong></label>
+                                    <input type="text"
+                                           name="telefono"
+                                           formControlName="telefono"
+                                           class="form-control"
+                                           id="inputTelefono"
+                                           [placeholder]="cliente.telefono || campoVacio">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-group">
+                        <label><strong>Darse de baja como usuario registrado</strong></label>
+                        <p>Para dar de baja su cuenta de usuario registrado en nuestro sistema, pulse en este enlace...<a id="eliminarCuenta"(click)="eliminarCuenta()">ELIMINAR MI CUENTA DE AGAPEA</a></p>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </form>
+        </div>
+    </div>
+</div>

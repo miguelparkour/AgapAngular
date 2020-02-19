@@ -1,0 +1,77 @@
+<div class="container">
+        
+    <div class="row">
+        <div class="col">
+            <h3><strong>Acceso a agapea.com</strong></h3>
+            <p>Para poder disfrutar de algunos de nuestros servicios, debes estar registrado. Registrarse en apapea.com es rapido y facil y GRATIS!</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            <div>
+                <h4><strong>Identificate con....</strong></h4>
+                <button class="btn btn-danger"(click)="LoginGoogle()">Google+</button>
+            </div>
+
+            <form [formGroup]="formlogin"
+                  (ngSubmit)="Login()">
+
+                <div class="form-group">
+                    <label for="email"><strong>Correo Electronico:</strong></label>
+                    <input type="email" 
+                           class="form-control"
+                           name="email"
+                           id="email"
+                           formControlName="email"
+                           placeholder="inicio sesion con tu email..." />
+                    <div class="form-group">
+                        <span class="text-danger" 
+                              *ngIf="formlogin.controls['email'].errors?.required">
+                            el email es obligatorio para la autenticacion
+                        </span>
+                        <span class="text-danger" 
+                              *ngIf="formlogin.controls['email'].errors?.email">
+                            el formato del email es incorrecto
+                        </span>                      
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password"><strong>Contraseña:</strong></label>
+                    <input type="password"
+                            class="form-control"
+                            name="password"
+                            id="password"
+                            formControlName="password"
+                            placeholder="tu password..." />
+                    <div class="form-group">
+                            <span class="text-danger" 
+                                  *ngIf="formlogin.controls['password'].errors?.required">
+                                    la password es obligatoria para la autenticacion
+                            </span>
+                            <span class="text-danger" 
+                                  *ngIf="formlogin.controls['password'].errors?.minlength">
+                                    la contraseña debe tener al menos 8 caracteres
+                            </span>                      
+                    </div>                            
+                </div>
+                <button type="submit"
+                        class="btn btn-primary"
+                        [disabled]="formlogin.status=='INVALID'">
+                    IDENTIFICARME
+                </button>
+                <!-- <a href="javascript:;" onclick="document.forms['formlogin'].submit()" class="btn btn-primary">
+                    <img src="../../assets/images/BotonLoginUsuario.png">
+                </a> -->
+            </form>
+        </div>
+
+        <div class="col-8">
+            <img src="../../assets/images/formLogin.png">
+            <a [routerLink]="['/Cliente/Registro']" routerLinkActive="router-link-active" >
+                <img src="../../assets/images/BotonRegistrarUsuario.png">
+            </a>
+        </div>
+    </div>
+</div>

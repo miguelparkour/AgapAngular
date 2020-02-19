@@ -1,0 +1,65 @@
+<div class="container">
+    <table>
+        <tr>
+            <td rowspan="8">
+                <img src="../../assets/images/imagenLibroDetalles.png" />
+            </td>
+            <td>
+                <h1><label>{{libroAMostrar.Titulo}}</label></h1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>{{libroAMostrar.Autores}}</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>{{libroAMostrar.Editorial}}</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>{{libroAMostrar.NumeroDePaginas}} paginas</label> paginas
+            </td>
+        </tr>
+        <tr>
+            <td>
+                ISBN: <label>{{libroAMostrar.ISBN.NumberLong}}</label>  ISBN-13: <label>{{libroAMostrar.ISBN13.NumberLong}}</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3><strong><label>{{libroAMostrar.Precio}}</label>€</strong></h3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p style="color:green">Compralo antes de <strong>17 horas y 38 minutos</strong> y lo recibes</p>
+                <p>en casa en <strong>3 dias laborales.</strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div>
+                    <a class="btn btn-primary"
+                       [routerLink]="['/AddLibroPedido', libroAMostrar.ISBN]"
+                       routerLinkActive="router-link-active" 
+                    >
+                        <img src="../../assets/images/BotonComprarLibroDetalles.png" />
+                    </a>
+
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<hr />
+
+<div class="card">
+    <div class="card-body">
+        {{libroAMostrar.Descripcion}}
+    </div>
+</div>
+

@@ -1,0 +1,14 @@
+<div class="container">
+
+        <div class="row" 
+            *ngFor="let unlibro of listaLibros">
+            <div class="col">
+                <!-- 
+                    vista minilibro de MinilibroComponent
+                    le tengo q pasar el objeto libro a pintar
+                    q esta en la variable "unlibro" del *ngFor
+                -->
+                <app-minilibro [libroApintar]="unlibro"></app-minilibro>
+            </div>
+        </div>
+</div>

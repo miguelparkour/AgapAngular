@@ -1,0 +1,191 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col">
+            <h2><strong>Registro en agapea.com</strong></h2>
+        <p>Tienes tres opciones para registrarte en Agapea.com. Puedes hacerlo a través de las redes sociales Facebook o Google en 4 segundos. 
+            También puedes registrarte con nosotros en menos de 40 segundos. Tan solo rellena el formulario con tus datos.</p>
+            <hr>
+        <p>En ambos casos, recibirás un correo electrónico en tu cuenta con un enlace con el que confirmarás tus datos, y estarás disfrutando de nuestros servicios y ventajas. </p>
+  
+        </div>
+    </div>
+
+    <div>
+        <h4><strong>Identificate con....</strong></h4>
+        <button class="btn btn-danger"(click)="registroGoogle()">Google+</button>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <form [formGroup]="formRegistro" (ngSubmit)="registrarUsuario()">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Datos de Mi Perfil...</h5>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="usernick"><strong>Usuario (nickname)</strong></label>
+                                <input type="text" 
+                                       class="form-control"
+                                       id="usernick"
+                                       name="nick"
+                                       formControlName="usernick"
+                                       placeholder="escribe aqui tu nick...">
+                            </div>
+                        
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4"><strong>Correo Electronico</strong></label>
+                                <input type="email" 
+                                       class="form-control"
+                                       id="inputEmail4"
+                                       name="email"
+                                       formControlName="email"
+                                       placeholder="escribe aqui tu email...">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4"><strong>Escribe cual sera tu contraseña</strong></label>
+                                <input type="password"
+                                       name="password"
+                                       class="form-control"
+                                       id="inputPassword4"
+                                       formControlName="password"
+                                       placeholder="escribe tu password...">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="reinputPassword4"><strong>Repite la contraseña</strong></label>
+                                <input type="password" 
+                                       class="form-control"
+                                       id="reinputPassword4"
+                                       formControlName="repassword"
+                                       placeholder="reescribe tu password">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Datos de Personales...</h5>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputNombre"><strong>Mi Nombre es:</strong></label>
+                                <input type="text"
+                                       name="nombre"
+                                       class="form-control"
+                                       id="inputNombre"
+                                       formControlName="nombre"
+                                       placeholder="hola?">
+                            </div>
+                        
+                            <div class="form-group col-md-6">
+                                <label for="inputApellidos"><strong>Mis Apellidos son:</strong></label>
+                                <input type="text" 
+                                       name="apellidos"
+                                       class="form-control"
+                                       id="inputApellidos"
+                                       formControlName="apellidos"
+                                       placeholder="introduce tus apellidos...">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputNIF"><strong>NIF:</strong></label>
+                                <input type="text" 
+                                       name="nif"
+                                       class="form-control"
+                                       id="inputNIF"
+                                       formControlName="nif"
+                                       placeholder="introduce tu NIF...">
+                            </div>
+                        
+                            <div class="form-group col-md-6">
+                                <label for="inputTelefono"><strong>un telefono de contacto:</strong></label>
+                                <input type="text" 
+                                       name="telefono"
+                                       class="form-control"
+                                       id="inputTelefono"
+                                       formControlName="telefono"
+                                       placeholder="introduce telefono de contacto...">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputAddress"><strong>Direccion de envio:</strong></label>
+                            <input type="text" 
+                                   name="direccion"
+                                   class="form-control"
+                                   id="inputAddress"
+                                   formControlName="direccion"
+                                   placeholder="c/nombre calle, numero, piso-letra">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="inputProvincia"><strong>Provincia</strong></label>
+                                <select id="inputProvincia" 
+                                        name="codpro"
+                                        class="form-control"
+                                        formControlName="provincia"
+                                        (change)="cargarMunicipios()"
+                                >
+                                    <option value="0" selected>Elige provincia...</option>
+                                    <option *ngFor="let unaprov of listaProvincias" 
+                                             [value]="unaprov.CodPro"
+                                    >
+                                                    {{unaprov.NombreProvincia}}
+                                            </option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                            <label for="inputLocalidad"><strong>Localidad</strong></label>
+                            <select id="inputLocalidad" 
+                                    name="codmun"
+                                    class="form-control"
+                                    formControlName="municipio">
+                                <option value="0" selected>Elige localidad...</option>
+                                <option *ngFor="let unmuni of listaMunicipios" 
+                                        [value]="unmuni.CodMun"
+                                >
+                                       {{unmuni.NombreMunicipio}}
+                               </option>                                
+                            </select>
+                            </div>
+                            <div class="form-group col-md-2">
+                            <label for="inputCP"><strong>CP</strong></label>
+                            <input type="text" 
+                                   name="cp"
+                                   class="form-control"
+                                   id="inputCP"
+                                   formControlName="cp">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="form-group">
+                    <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="checkCondicionesUso">
+                    <label class="form-check-label" for="checkCondicionesUso">
+                        Acepto las Condiciones de uso y nuestra Politica de Cookies
+                    </label>
+                    </div>
+                </div>
+
+                <button type="submit" 
+                        class="btn btn-primary"
+                        [disabled]="formRegistro.status=='INVALID'">REGISTRARME</button>
+            </form>
+        </div>
+    </div>
+
+</div>  
