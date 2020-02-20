@@ -1,0 +1,80 @@
+<table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Titulo</th>
+        <th>Cantidad</th>
+        <th>Precio ud</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of itemsCarro">
+            <th scope="row">
+                <button type="button" 
+                        class="btn btn-danger btn-sm"
+                        (click)="anularLibro(item.libroItem)">X</button>
+                {{item.libroItem.Titulo}}
+            </th>
+            <td>
+                <button type="button" 
+                        class="btn btn-info btn-sm"
+                        (click)="restarLibro(item.libroItem)">-</button>
+                {{item.cantidad}}
+                <button type="button" 
+                        class="btn btn-info btn-sm"
+                        (click)="sumarLibro(item.libroItem)">+</button>
+            </td>
+            <td>{{item.libroItem.Precio}} €</td>
+            <td>{{math.round((item.libroItem.Precio*item.cantidad) * 100) / 100}} €</td>
+        </tr>
+        <tr class="table-warning">
+            <td>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" 
+                           id="inputGastosP" 
+                           name="gastosEnvio"
+                           value="Peninsula" 
+                           class="custom-control-input"
+                           checked
+                           (click)="gastosEnvio(Peninsula)">
+                    <label class="custom-control-label" 
+                           for="inputGastosP">
+                           Peninsula
+                    </label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" 
+                           id="inputGastosC" 
+                           name="gastosEnvio"
+                           value="Canarias" 
+                           class="custom-control-input"
+                           (click)="gastosEnvio(Canarias)">
+                    <label class="custom-control-label" 
+                           for="inputGastosC">
+                           Canarias
+                    </label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" 
+                           id="inputGastosE" 
+                           name="gastosEnvio"
+                           value="UE" 
+                           class="custom-control-input"
+                           (click)="gastosEnvio(UE)">
+                    <label class="custom-control-label" 
+                           for="inputGastosE">
+                           UE
+                    </label>
+                </div>
+            </td>
+            <td>Envio: {{GastosEnvio}}€</td>
+            <th scope="row">
+                TOTAL
+            </th>
+            <td>{{TotalPedido}} €</td>
+        </tr>
+    </tbody>
+  </table>
+    <button type="button" class="btn btn-secondary btn-lg btn-block">Seguir comprando</button>
+    <button type="button" class="btn btn-primary btn-lg btn-block">Finalizar Pedido</button>
+

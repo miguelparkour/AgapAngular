@@ -28,18 +28,12 @@ export class LibrosComponent implements OnInit {
         let _idMateria:number;
         this._rutaActiva.paramMap.subscribe(
             (parametros:ParamMap)=>{
-                 console.log(`los parametros de la url:  ${parametros.keys}`);
                 _idMateria=+parametros.get('idMateria');
-
-                console.log(`valor del parametro :idMateria .... ${_idMateria}`);
-
                 this._subscript=this._miservicio.DevolverLibros(_idMateria).subscribe(
                   (libros:Libro[])=>{
-                          console.log( libros);
-                          this.listaLibros=libros;
-      
-                   },
-                   (err) => console.log(`Errores al recuperar los libros: ${err}`)
+                    this.listaLibros=libros;
+                  },
+                  (err) => console.log(`Errores al recuperar los libros: ${err}`)
                  );
 
 

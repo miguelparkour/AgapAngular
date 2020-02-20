@@ -25,7 +25,7 @@
         </tr>
         <tr>
             <td>
-                ISBN: <label>{{libroAMostrar.ISBN.NumberLong}}</label>  ISBN-13: <label>{{libroAMostrar.ISBN13.NumberLong}}</label>
+                ISBN: <label>{{libroAMostrar.ISBN}}</label>  ISBN-13: <label>{{libroAMostrar.ISBN13}}</label>
             </td>
         </tr>
         <tr>
@@ -35,20 +35,11 @@
         </tr>
         <tr>
             <td>
-                <p style="color:green">Compralo antes de <strong>17 horas y 38 minutos</strong> y lo recibes</p>
-                <p>en casa en <strong>3 dias laborales.</strong></p>
-            </td>
-        </tr>
-        <tr>
-            <td>
                 <div>
                     <a class="btn btn-primary"
-                       [routerLink]="['/AddLibroPedido', libroAMostrar.ISBN]"
-                       routerLinkActive="router-link-active" 
-                    >
+                       (click)="ComprarLibro(libroAMostrar)">
                         <img src="../../assets/images/BotonComprarLibroDetalles.png" />
                     </a>
-
                 </div>
             </td>
         </tr>

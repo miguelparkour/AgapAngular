@@ -4,7 +4,7 @@ import { ItemCarro } from 'src/app/modelos/itemsCarro';
 
 @Component({
   selector: 'app-minilibropedido',
-  templateUrl: '../../vistas/Tienda/minilibropedido.component.html',
+  templateUrl: '../../vistas/ZonaCliente/minilibropedido.component.html',
   styleUrls: ['../../vistas/css/minilibropedido.component.css']
 })
 export class MinilibropedidoComponent implements OnInit {

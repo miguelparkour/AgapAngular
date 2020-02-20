@@ -7,9 +7,8 @@ import { VistalibroComponent } from './componentes/Tienda/vistalibro.component';
 import { Error404Component } from './componentes/Tienda/error404.component';
 
 import { MiPerfilComponent } from './componentes/ZonaCliente/miperfil.component';
-import { MisPedidosComponent } from './componentes/ZonaCliente/mispedidos.component';
 import { MisDireccionesComponent } from './componentes/ZonaCliente/misdirecciones.component';
-import { PedidoComponent } from './componentes/Tienda/pedido.component';
+import { PedidoComponent } from './componentes/ZonaCliente/pedido.component';
 import { LoginComponent } from './componentes/ZonaCliente/login.component';
 import { RegistroComponent } from './componentes/ZonaCliente/registro.component';
 import { AuthguardGuard } from './servicios/authguard.guard';
@@ -25,7 +24,7 @@ import { AuthguardGuard } from './servicios/authguard.guard';
               { path:'Registro', component: RegistroComponent},
               { path:'MiPanel', canActivate: [AuthguardGuard], children:[
                 { path: 'MiPerfil', component: MiPerfilComponent },
-                { path: 'MisPedidos', component: MisPedidosComponent },
+                { path: 'MisPedidos', component: PedidoComponent },
                 { path: 'MisDirecciones', component: MisDireccionesComponent }  
               ]}
         ]

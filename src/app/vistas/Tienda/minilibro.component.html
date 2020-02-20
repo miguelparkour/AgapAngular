@@ -5,10 +5,10 @@
                 <img src="../../assets/images/imagenLibro.png" />
             </td>
             <td>
-                <a 
-                 [routerLink]="['/DetalleLibro/',libroApintar.ISBN]"
-                 routerLinkActive="router-link-active"                
+                <a
                  (click)="cargarEnStorage(libroApintar)"
+                 [routerLink]="['/DetalleLibro/',libroApintar.ISBN]"
+                 routerLinkActive="router-link-active"
                 > {{libroApintar.Titulo}} </a>
             </td>
         </tr>

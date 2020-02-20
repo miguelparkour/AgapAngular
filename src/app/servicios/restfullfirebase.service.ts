@@ -54,16 +54,21 @@ export class RestfullfirebaseService {
               .valueChanges();
   }
 
-  DevolverLibro(isbn:string):Observable<Libro>{
-    return this._db
-               .collection<Libro>(
-                      'libros',
-                      (ref)=>ref.where('ISBN','==',isbn)
-               ).valueChanges()
-               .pipe(
-                    take(1),
-                    map( (libros:Libro[]) => libros[0])
-                    );
+  DevolverLibro(isbn:string):Promise<Libro>{
+    // cambio el isbn de string a number
+    let id:number=+isbn
+    return new Promise<Libro>(
+      (resolve,reject)=>{
+        this._db.collection('libros',ref=>ref.where('ISBN','==',id))
+        .valueChanges()
+        .subscribe(
+          (data)=>{
+            let libro:Libro=data[0] as Libro;
+            resolve(libro);
+          }
+        )
+      }
+    )
   }
 }
   /*

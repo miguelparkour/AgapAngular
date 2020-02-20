@@ -10,7 +10,8 @@ export class Libro {
     public Descripcion?: string;
     public FicheroImagen?: string;
 
-    constructor(tit:string,
+    constructor(){}
+    /* constructor(tit:string,
                 edi:string,
                 aut:string,
                 isb:string,
@@ -34,24 +35,8 @@ export class Libro {
                     }
                     if(fich !== "" || fich !== null){
                         this.FicheroImagen=fich;                        
-                    }
-
-                    
-    }
-    /*
-    private _titulo:string;
-
-    
-    public get Titulo() : string {
-        return this._titulo;
-    }
-    
-    public set Titulo(value : string) {
-        this._titulo = value;
-    }
-    */
-
-    
+                    }    
+    }*/
     
 
 
