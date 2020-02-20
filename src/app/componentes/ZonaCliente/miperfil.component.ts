@@ -1,10 +1,9 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { Cliente } from 'src/app/modelos/cliente';
 import { LocalstorageService } from 'src/app/servicios/localstorage.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthFirebaseService } from 'src/app/servicios/auth-firebase.service';
 import { CuentaCliente } from 'src/app/modelos/cuentaCliente';
-import { HttpClient } from '@angular/common/http';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Router } from '@angular/router';
 
@@ -87,7 +86,6 @@ export class MiPerfilComponent implements OnInit {
     }
 
     // simulamos la subida a firebase guardando en el storage
-    console.log('lo que voy a guardar en firebase: ',clienteStorage);
     this._storage.AlmacenarStorage('cliente',clienteStorage)
 
 

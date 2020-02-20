@@ -220,7 +220,6 @@ export class AuthFirebaseService {
 
   async ActualizarCliente(cliente){
 
-    console.log("Cliente en actualizarCliente",cliente);
 
     if (cliente.miCuenta.password) { // hay password para actualizar 
       await this._auth

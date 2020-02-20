@@ -31,7 +31,6 @@ export class DetallepedidoComponent implements OnInit {
         this.pedido=element as Pedido;
       }
     });
-    console.log(this.pedido);
   }
 
   back(){

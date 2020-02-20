@@ -5,48 +5,21 @@
     </a>
 </header>
 
-<div class="row">
-    <a [routerLink]="['/Cliente/Login']" routerLinkActive="router-link-active"  >
-       Acceder a mi cuenta
+<div *ngIf="log; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>
+    <a  class="m-5"
+        [routerLink]="['/Cliente/MiPanel/MiPerfil']" 
+        routerLinkActive="router-link-active">
+        Ir a Mi Perfil
     </a>
-</div>
-
-<!-- busqueda de libros-->
-<div class="row">
-        <div class="col">
-           <div class="table-responsive">
-             <table class="table">
-    <tr>
-        <td style="width:80%;">
-                <input type="text"
-                       class="form-control"
-                       style="width:100%; min-width:800px;"
-                       placeholder="...Buscar Libros por Titulo, ISBN, Autor..."
-                       id="TextoBuscar" />
-        </td>
-        <td style="width:20%;">
-            <button type="button" class="btn btn-primary" id="BotonBuscar">
-                <span class="glyphicon glyphicon-search"></span> Buscar
-            </button>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <label class="radio-inline">
-                <input type="radio" name="optradio" checked>Titulo
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">Autor
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">ISBN
-            </label>
-        </td>
-    </tr>
-             </table>
-           </div>
-        </div>
-</div>
+</ng-template>
+<ng-template #elseBlock>
+    <a  class="m-5"
+        [routerLink]="['/Cliente/Login']"
+        routerLinkActive="router-link-active">
+        Acceder a tu Cuenta
+    </a>
+</ng-template>
 
  <!-- body de las vistas q se incrustan en el layout -->
 <div class="row">
