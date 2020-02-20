@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-header">
+        Factura
+    </div>
+    <div class="card-body">
+        <div *ngFor="let item of pedido.ListaElementos">
+            <p class="card-text">{{item.cantidad}} - {{item.libroItem.Titulo}}</p>
+            <hr>
+        </div>
+        <p>
+            Gastos envío: {{pedido.GastosEnvio}} €
+        </p>
+        <p>
+            Precio final: <strong>{{pedido.PrecioTotal}} €</strong> (Gastos de envio incluidos)
+        </p>
+        <h5 class="card-title">Direccion de Envio</h5>
+        <div *ngIf="direcciones.length>0">
+            <div *ngFor="let item of direcciones; index as i;">
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="customRadio{{i}}" name="customRadio" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadio{{i}}"> {{item.direccion}} </label>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <a href="#" class="btn btn-primary" (click)="confirmarCompra()">Confirmar Compra</a>
+    </div>
+</div>

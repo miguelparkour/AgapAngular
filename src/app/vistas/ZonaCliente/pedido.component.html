@@ -75,6 +75,13 @@
         </tr>
     </tbody>
   </table>
-    <button type="button" class="btn btn-secondary btn-lg btn-block">Seguir comprando</button>
-    <button type="button" class="btn btn-primary btn-lg btn-block">Finalizar Pedido</button>
+    <a class="btn btn-secondary btn-lg btn-block"
+            [routerLink]="['/']"
+            routerLinkActive="router-link-active">
+            Seguir comprando
+    </a>
+    <a class="btn btn-primary btn-lg btn-block"
+            (click)="finalizarPedido(itemsCarro)">
+            Finalizar Pedido
+    </a>
 

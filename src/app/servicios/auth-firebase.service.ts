@@ -254,7 +254,7 @@ export class AuthFirebaseService {
               .doc(value)
               .set(cliente)
               .then( // si todo ha salido bien lo guardamos en el storage
-                value=>{ // este value es undefined, pero hace falta ponerlo
+                ()=>{
                   this._storage.AlmacenarStorage('cliente',cliente);
                 }
               )

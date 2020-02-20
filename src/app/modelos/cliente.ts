@@ -11,4 +11,5 @@ export class Cliente {
     public miCuenta:CuentaCliente;
     public misPedidos:Array<Pedido>;
     public userIdFirebase:string;
+    public foto:string;
 }

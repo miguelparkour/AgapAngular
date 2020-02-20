@@ -1,17 +1,19 @@
-import {Libro} from './libro';
+import { ItemCarro } from './itemsCarro';
+import { Direccion } from './direccion';
 
 export class Pedido {
-    public IdPedido:string;
+    public Id:string;
     public NifCliente:string;
-    public FechaPedido:Date;
-    public EstadoPedido:string;
+    public Fecha:Date;
+    public Estado:string;
     public TipoGastosEnvio:string;
     public GastosEnvio:number;
-    public ListaElementosPedido:Array<[Libro,number]>;
-    public SubTotalPedido:number;
-    public TotalPedido:number;
+    public ListaElementos:ItemCarro[];
+    public PrecioSubTotal:number;
+    public PrecioTotal:number;
+    public DireccionEnvio:Direccion;
 
-    public CalcularTotalPedido():number {
+    /* public CalcularTotalPedido():number {
         let _subtotal:number=0;
         let _gastosEnv:number=0;
         this.ListaElementosPedido.forEach(
@@ -34,5 +36,5 @@ export class Pedido {
         this.TotalPedido = this.SubTotalPedido + this.GastosEnvio;
         
         return this.TotalPedido;
-    }
+    } */
 }

@@ -17,7 +17,6 @@ export class MiPerfilComponent implements OnInit {
   public formularioModificar:FormGroup;
   public cliente:Cliente;
   public campoVacio:string="";
-  public foto;
 
   constructor(private _storage: LocalstorageService,
               private _auth: AuthFirebaseService,
@@ -36,17 +35,18 @@ export class MiPerfilComponent implements OnInit {
     )
   }
   
-  handleFileInput(event){
+  async handleFileInput(event){
     const id=Math.random().toString(36).substring(2);
     const file=event.target.files[0];
     const filePath='avatares/'+id+'.jpg';
     const ref=this.afStorage.ref(filePath);
-    const task= this.afStorage.upload(filePath,file)
+    await this.afStorage.upload(filePath,file)
     .then(
       async a=>{
         await ref.getDownloadURL().subscribe(
           data=>{
             console.log(data);// aquí está la url de la imagen subida en task
+            this.cliente.foto=data;
           }
         )
       }
@@ -56,7 +56,6 @@ export class MiPerfilComponent implements OnInit {
 
   modificarDatos(){
 
-    console.log(typeof(this.formularioModificar.value.foto));
     // inicializamos el cliente desde el storage
     let clienteStorage=this._storage.RecuperarStorage('cliente');
 
@@ -66,6 +65,7 @@ export class MiPerfilComponent implements OnInit {
     cliente.apellidos=this.formularioModificar.value.apellidos;
     cliente.nif=this.formularioModificar.value.nif;
     cliente.telefono=this.formularioModificar.value.telefono;
+    cliente.foto=this.cliente.foto;
 
     // lo mismo con los parametros de la cuenta
     let cuenta:CuentaCliente=new CuentaCliente();
@@ -83,33 +83,16 @@ export class MiPerfilComponent implements OnInit {
         clienteStorage.miCuenta[prop]=cuenta[prop];
       }
     }
-    console.log(clienteStorage);
+
+    // simulamos la subida a firebase guardando en el storage
+    console.log('lo que voy a guardar en firebase: ',clienteStorage);
+    this._storage.AlmacenarStorage('cliente',clienteStorage)
     // llamamos al servicio para que actualice los datos en Firebase
     //this._auth.ActualizarCliente(clienteStorage);
     
   }
 
 
-  //-----metodo para actualizar datos del cliente en FireStore ----------
-  grabarDatosCliente(formMiPerfil){
-    
-    /* let elformulario=formMiPerfil;
-    console.log("la variable ngform de la vista vale...", elformulario);
-    //para recuperar el valor de un campo: elformulario.controls['nombre_campo'].value
-    // el valor del campo PASSWORD no esta mapeado contra ninguna propiedad del modelo
-    //tengo q acceder directamente al elemento del DOM con @ViewChild
-    
-    let _password:string=this.password.nativeElement.value;
-
-    this._auth.ModificarDatosPefil(
-      elformulario.controls['nombre'].value,
-      elformulario.controls['apellidos'].value,
-      _password,
-      elformulario.controls['nif'].value,
-      elformulario.controls['usernick'].value,
-      elformulario.controls['telefono'].value      
-    ); */
-  }
   ngOnInit() {
   }
 

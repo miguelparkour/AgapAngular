@@ -12,12 +12,12 @@ import { PedidoComponent } from './componentes/ZonaCliente/pedido.component';
 import { LoginComponent } from './componentes/ZonaCliente/login.component';
 import { RegistroComponent } from './componentes/ZonaCliente/registro.component';
 import { AuthguardGuard } from './servicios/authguard.guard';
+import { FinpedidoComponent } from "./componentes/ZonaCliente/finpedido.component";
 
 ;const routes: Routes = [
   { path: 'Libros/:idMateria', component: LibrosComponent },
   { path: '', redirectTo: 'Libros/0', pathMatch: 'full' },
   { path: 'DetalleLibro/:param', component: VistalibroComponent },
-  { path:'AddLibroPedido/:idLibro', component: PedidoComponent },
   {path:'Tienda/Pedido',component:PedidoComponent},
   { path: 'Cliente',children:[
               { path:'Login', component: LoginComponent},
@@ -25,6 +25,7 @@ import { AuthguardGuard } from './servicios/authguard.guard';
               { path:'MiPanel', canActivate: [AuthguardGuard], children:[
                 { path: 'MiPerfil', component: MiPerfilComponent },
                 { path: 'MisPedidos', component: PedidoComponent },
+                { path: 'FinalizarPedido/:idPedido', component: FinpedidoComponent },
                 { path: 'MisDirecciones', component: MisDireccionesComponent }  
               ]}
         ]

@@ -30,9 +30,10 @@ export class ControlpedidoService {
     });
     // si si que está lo modificamos, ya sea para restar anular o sumar
     if (indice>=0) {
-      if (operacion=='resta') {
+      if (operacion=='resta'&&arrayItems[indice].cantidad!=1) {
         arrayItems[indice].cantidad--;
-      }else if(operacion=='anula'){
+      }else if((arrayItems[indice].cantidad===1&&operacion=='resta') || // que tambien anule si es la resta del ultimo libro
+                operacion=='anula'){ 
         arrayItems.splice( indice, 1 );
       } else { // sumar
         arrayItems[indice].cantidad++;

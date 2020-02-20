@@ -114,6 +114,7 @@ export class RegistroComponent implements OnInit,OnDestroy {
         _nuevoCliente.apellidos=this.formRegistro.controls['apellidos'].value;
         _nuevoCliente.nif=this.formRegistro.controls['nif'].value;
         _nuevoCliente.telefono=this.formRegistro.controls['telefono'].value;
+        _nuevoCliente.foto='../../../assets/images/ImgCliente.png'; // foto por defecto
 
         let _cuenta:CuentaCliente=new CuentaCliente();
         _cuenta.email=this.formRegistro.controls['email'].value;
