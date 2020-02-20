@@ -6,6 +6,7 @@ import { AuthFirebaseService } from 'src/app/servicios/auth-firebase.service';
 import { CuentaCliente } from 'src/app/modelos/cuentaCliente';
 import { HttpClient } from '@angular/common/http';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-miperfil',
@@ -20,7 +21,8 @@ export class MiPerfilComponent implements OnInit {
 
   constructor(private _storage: LocalstorageService,
               private _auth: AuthFirebaseService,
-              private afStorage: AngularFireStorage) {
+              private afStorage: AngularFireStorage,
+              private _router:Router) {
     this.cliente=this._storage.RecuperarStorage('cliente');
     this.formularioModificar=new FormGroup(
       {
@@ -87,11 +89,17 @@ export class MiPerfilComponent implements OnInit {
     // simulamos la subida a firebase guardando en el storage
     console.log('lo que voy a guardar en firebase: ',clienteStorage);
     this._storage.AlmacenarStorage('cliente',clienteStorage)
+
+
     // llamamos al servicio para que actualice los datos en Firebase
-    //this._auth.ActualizarCliente(clienteStorage);
+    this._auth.ActualizarCliente(clienteStorage);
     
   }
 
+  cerrarSesion(){
+    this._storage.LimpiarStorage();
+    this._router.navigate(['/Cliente/Login'])
+  }
 
   ngOnInit() {
   }

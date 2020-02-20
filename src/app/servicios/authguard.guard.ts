@@ -15,15 +15,18 @@ export class AuthguardGuard implements CanActivate {
     state: RouterStateSnapshot) {
     let _token=this._storage.RecuperarStorage('sesionId');
     if(_token){
-      let horaActual = Date.now();
+      let horaToken=new Date(_token.expiracion);
+      let horaAhora=new Date(Date.now());
       // comparamos la hora actual con la de expiracion del token
-       if(_token.expiracion>horaActual){
+       if(horaToken<horaAhora){
+         console.log("Vaya! parece que tu sesión a caducado, por favor vuelve a registrarte");
          this._storage.LimpiarStorage();
          this._router.navigate(['/Cliente/Login']);
        }
         return true;
     }else{
-        this._router.navigate(['/Cliente/Login']);
+      console.log("Debes registrarte para poder entrar en la aplicacion");
+      this._router.navigate(['/Cliente/Login']);
     }      
   }
   

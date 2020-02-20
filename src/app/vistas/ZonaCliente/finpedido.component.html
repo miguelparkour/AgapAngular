@@ -13,16 +13,28 @@
         <p>
             Precio final: <strong>{{pedido.PrecioTotal}} €</strong> (Gastos de envio incluidos)
         </p>
-        <h5 class="card-title">Direccion de Envio</h5>
-        <div *ngIf="direcciones.length>0">
-            <div *ngFor="let item of direcciones; index as i;">
-                <div class="custom-control custom-radio">
-                    <input type="radio" id="customRadio{{i}}" name="customRadio" class="custom-control-input">
-                    <label class="custom-control-label" for="customRadio{{i}}"> {{item.direccion}} </label>
+        <form [formGroup]="formDireccion" (ngSubmit)="confirmarCompra()">
+            <h5 class="card-title">Direccion de Envio</h5>
+            <div *ngIf="direcciones.length>0">
+                <div *ngFor="let item of direcciones; index as i;">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" 
+                                id="direccionEnvio{{i}}" 
+                                name="direccionEnvio" 
+                                class="custom-control-input"
+                                value="{{i}}"
+                                formControlName="direccionEnvio">
+                        <label class="custom-control-label" 
+                                for="direccionEnvio{{i}}"> {{item.direccion}} </label>
+                    </div>
                 </div>
             </div>
-        </div>
-        <hr>
-        <a href="#" class="btn btn-primary" (click)="confirmarCompra()">Confirmar Compra</a>
+            <hr>
+            <button class="btn btn-primary" 
+               type="submit"
+               [disabled]="formDireccion.status=='INVALID'">
+               Confirmar Compra
+            </button>
+        </form>
     </div>
 </div>

@@ -27,7 +27,6 @@ export class RegistroComponent implements OnInit,OnDestroy {
               private _servAuth: AuthFirebaseService,
               private _router: Router) {
 
-    let _patronPassw:string="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}"
     this.formRegistro=new FormGroup(
         {
             usernick: new FormControl('',[Validators.required]),
@@ -50,11 +49,11 @@ export class RegistroComponent implements OnInit,OnDestroy {
                                     Validators.pattern("^[0-9]{8}[A-Za-z]$")
                                     ]),
             telefono: new FormControl('',[/* Validators.required */]),
-            direccion: new FormControl('',[/* Validators.required */]),
-            provincia: new FormControl('',[/* Validators.required */]),
-            municipio: new FormControl('',[/* Validators.required */]),
+            direccion: new FormControl('',[Validators.required]),
+            provincia: new FormControl('',[Validators.required]),
+            municipio: new FormControl('',[Validators.required]),
             cp: new FormControl('',[
-                                    /* Validators.required */,
+                                    Validators.required,
                                     Validators.pattern("^[0-9]{5}$")])
         }
     );

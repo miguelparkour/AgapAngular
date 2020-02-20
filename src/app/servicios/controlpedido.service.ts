@@ -22,7 +22,7 @@ export class ControlpedidoService {
       (data:ItemCarro[])=>{
         arrayItems=data
       }
-    );
+    )
     // averiguamos si el libro ya está en el pedido
     let indice:number=-1;
     arrayItems.forEach((element,index) =>{
@@ -56,5 +56,12 @@ export class ControlpedidoService {
       }
     )
     return precio;
+  }
+
+  public finalizarPedido(){
+    // empujamos al subject un Array vacio
+    this._itemsPedido.next([]);
+    // vaciamos el pedido del storage a efectos de comprobaciones
+    this._storage.BorrarStorage('items');
   }
 }

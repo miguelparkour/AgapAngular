@@ -1,4 +1,12 @@
 <div class="container">
+
+    
+    <button [routerLink]="['/Cliente/MiPanel/MisCompras']"
+            routerLinkActive="router-link-active"
+            class="btn btn-secondary btn-lg btn-block">
+            Mis Compras
+    </button>
+
     <div class="row">
         <div class="col">
         <h3><strong>Mi perfil de usuario</strong></h3>
@@ -10,12 +18,6 @@
     <div class="row">
     
         <div class="col-12">
-            <!-- 
-            {{#if this.errores}}
-                <div><span class="text-danger">Errores en el servidor: {{this.errores.message}}</span></div>
-            {{/if}}
-            -->
-            <!-- formulario de datos personales -->
                 <form [formGroup]="formularioModificar" (ngSubmit)="modificarDatos()">
                     <div class="card">
                         <div class="card-body">
@@ -77,15 +79,6 @@
                                            placeholder="Repita la nueva contraseña">
                                 </div>
                             </div>
-
-                            <!-- <div class="row">
-                                <div class="col">
-                                    <label><strong>Mi Descripcion</strong></label>
-                                    <textarea class="form-control"
-                                              placeholder="Me gusta definirme como un lector de libros de ...." 
-                                    ></textarea>
-                                </div>
-                            </div> -->
                         </div>
 
                     </div>
@@ -142,13 +135,14 @@
 
 
                     </div>
-
-                    <div class="form-group">
-                        <label><strong>Darse de baja como usuario registrado</strong></label>
-                        <p>Para dar de baja su cuenta de usuario registrado en nuestro sistema, pulse en este enlace...<a id="eliminarCuenta"(click)="eliminarCuenta()">ELIMINAR MI CUENTA DE AGAPEA</a></p>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    <button type="submit" 
+                            class="btn btn-secondary btn-lg btn-block">
+                            Guardar Cambios
+                    </button>
+                    <button (click)="cerrarSesion()" 
+                            class="btn btn-secondary btn-lg btn-block">
+                            Cerrar Sesion
+                    </button>
                 </form>
         </div>
     </div>

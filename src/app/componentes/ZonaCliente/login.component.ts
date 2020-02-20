@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
 
   public formlogin: FormGroup;
-  private _subscripAuthSvc: Subscription;
 
   constructor(private _auth:AuthFirebaseService,
               private _router:Router,
@@ -34,19 +33,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (log) {
       this._router.navigate(['/Cliente/MiPanel/MiPerfil']);
     }
-    
-    /* this._auth.Login(_email,_passw)
-              .then( (resp:boolean)=>{
-                    
-                    console.log("respuesta del login del servicio",resp);
-
-                    if(resp){
-                      this._router.navigate(['/Cliente/MiPanel/MiPerfil']);
-                    } else {
-                      //errores a la vista para q salgan en rojo...
-                    }
-              })
-              .catch(); */
   }     
     
 
@@ -57,6 +43,5 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    //this._subscripAuthSvc.unsubscribe();
   }
 }

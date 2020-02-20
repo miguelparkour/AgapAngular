@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-8">
+        <p class="font-weight-bold">
+            Direccion de envio: {{pedido.DireccionEnvio.direccion}}, CP: {{pedido.DireccionEnvio.cp}} 
+        </p>
+    </div>
+    <div class="col-4">
+        <button class="btn btn-secondary btn-lg btn-block"
+                (click)="back()">
+                Volver
+        </button>
+    </div>
+</div>
+<table class="table table-striped border border-secondary">
+    <thead class="thead-dark">
+      <tr>
+        <th colspan="4" style="text-align: center">Articulos del pedido</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="card-body" *ngFor="let item of pedido.ListaElementos">
+            <td style="vertical-align:middle;">
+                <img src="../../assets/images/imagenLibro.png" 
+                     alt="Libro {{item.libroItem.ISBN}}"
+                     width="50px">
+            </td>
+            <td style="vertical-align:middle;">
+                {{item.libroItem.ISBN}}
+            </td>
+            <td style="vertical-align:middle;">
+                {{item.libroItem.Titulo}}
+            </td>
+            <td style="vertical-align:middle;">
+                {{item.cantidad}}
+            </td>
+    </tbody>
+</table>

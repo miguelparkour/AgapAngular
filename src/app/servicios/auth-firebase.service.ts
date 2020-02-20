@@ -84,8 +84,7 @@ export class AuthFirebaseService {
             let _token:TokenSesion= new TokenSesion();
             _token.email=correo;
             _token.jwt=await value.user.getIdToken();
-            _token.expiracion=(await value.user.getIdTokenResult()).claims.exp;
-            // console.log("tokenResult: ",await value.user.getIdTokenResult());
+            _token.expiracion=new Date(Date.now()+(2*60*60*1000))
             this._storage.AlmacenarStorage('sesionId',_token);
 
             // recuperamos de la base de datos el cliente que tenga la uid que nos pasa el signitwith..
@@ -220,6 +219,8 @@ export class AuthFirebaseService {
 
 
   async ActualizarCliente(cliente){
+
+    console.log("Cliente en actualizarCliente",cliente);
 
     if (cliente.miCuenta.password) { // hay password para actualizar 
       await this._auth

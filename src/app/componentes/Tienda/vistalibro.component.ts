@@ -39,30 +39,6 @@ export class VistalibroComponent implements OnInit {
         )
       }
     )
-
-    //this.libroAMostrar=JSON.parse(localStorage.getItem("libro")) as Libro;
-    /* this.libroAMostrar=this._storage.RecuperarStorage("libro") as Libro;
-    console.log("estamos en VistaLibro, el libro del storage vale:",this.libroAMostrar);
-
-    if(this.libroAMostrar===null || this.libroAMostrar===undefined){
-      //no existe el libro en el storage, lo recupero de la BD de firebase a partir del ISBN
-      console.log("arrrrrrrrrrrg no existe en el storage");
-      let _isbn:string;
-      this._rutaActual.paramMap.subscribe(
-            (parametros)=> {
-                  _isbn=parametros.get("param");
-                  console.log("el ISBN a buscar",_isbn);
-                  this._rest.DevolverLibro(_isbn).subscribe(
-                        (datos:Libro)=> {
-                              console.log("libro desde la BD",datos);
-                              this.libroAMostrar=datos
-                        }
-                  );
-                  //hacer en el servicio REST contra firebase un metodo q pasandole el
-                  // ISBN me devuelva el libro en cuestion
-            }
-      );
-    } */
   }
 
   

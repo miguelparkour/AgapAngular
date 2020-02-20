@@ -1,0 +1,27 @@
+<table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Id</th>
+        <th>Fecha del pedido</th>
+        <th>Precio Total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr class="card-body" *ngFor="let pedido of pedidos">
+            <td>
+                {{pedido.Id}}
+            </td>
+            <td>
+                {{pedido.Fecha}}
+            </td>
+            <td>
+                {{pedido.PrecioTotal}}
+            </td>
+            <td [routerLink]="['/Cliente/MiPanel/DetallePedido', pedido.Id]"
+                routerLinkActive="router-link-active"
+                class="btn btn-secondary">
+                Ver Detalles
+            </td>
+    </tbody>
+</table>

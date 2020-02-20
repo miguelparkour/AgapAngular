@@ -13,6 +13,8 @@ import { LoginComponent } from './componentes/ZonaCliente/login.component';
 import { RegistroComponent } from './componentes/ZonaCliente/registro.component';
 import { AuthguardGuard } from './servicios/authguard.guard';
 import { FinpedidoComponent } from "./componentes/ZonaCliente/finpedido.component";
+import { MisComprasComponent } from './componentes/ZonaCliente/mis-compras.component';
+import { DetallepedidoComponent } from './componentes/ZonaCliente/detallepedido.component';
 
 ;const routes: Routes = [
   { path: 'Libros/:idMateria', component: LibrosComponent },
@@ -24,7 +26,9 @@ import { FinpedidoComponent } from "./componentes/ZonaCliente/finpedido.componen
               { path:'Registro', component: RegistroComponent},
               { path:'MiPanel', canActivate: [AuthguardGuard], children:[
                 { path: 'MiPerfil', component: MiPerfilComponent },
+                { path: 'MisCompras', component: MisComprasComponent },
                 { path: 'MisPedidos', component: PedidoComponent },
+                { path: 'DetallePedido/:idPedido', component: DetallepedidoComponent },
                 { path: 'FinalizarPedido/:idPedido', component: FinpedidoComponent },
                 { path: 'MisDirecciones', component: MisDireccionesComponent }  
               ]}

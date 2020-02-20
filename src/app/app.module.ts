@@ -36,6 +36,8 @@ import { RegistroComponent } from './componentes/ZonaCliente/registro.component'
 import { CargarthumbnailDirective } from './directivas/cargarthumbnail.directive';
 import { MinilibropedidoComponent } from './componentes/ZonaCliente/minilibropedido.component';
 import { FinpedidoComponent } from './componentes/ZonaCliente/finpedido.component';
+import { MisComprasComponent } from './componentes/ZonaCliente/mis-compras.component';
+import { DetallepedidoComponent } from './componentes/ZonaCliente/detallepedido.component';
 
 
 
@@ -54,7 +56,9 @@ import { FinpedidoComponent } from './componentes/ZonaCliente/finpedido.componen
     RegistroComponent,
     CargarthumbnailDirective,
     MinilibropedidoComponent,
-    FinpedidoComponent
+    FinpedidoComponent,
+    MisComprasComponent,
+    DetallepedidoComponent
   ],
   imports: [
     BrowserModule,
